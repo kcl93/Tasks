@@ -1,0 +1,23 @@
+###############################################
+# Syntax coloring for the task scheduler library
+###############################################
+
+###############################################
+# Datatypes (KEYWORD1)
+###############################################
+
+###############################################
+# Functions (KEYWORD2)
+###############################################
+
+Tasks_Init	KEYWORD2
+Tasks_Add	KEYWORD2
+Tasks_Remove	KEYWORD2
+Tasks_Delay	KEYWORD2
+Tasks_SetState	KEYWORD2
+Tasks_Start_Task	KEYWORD2
+Tasks_Pause_Task	KEYWORD2
+Tasks_Start	KEYWORD2
+Tasks_Pause	KEYWORD2
+
+####################### END ############################
