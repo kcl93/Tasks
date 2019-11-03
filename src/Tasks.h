@@ -29,30 +29,59 @@
 */
 
 
+/*-----------------------------------------------------------------------------
+    MODULE DEFINITION FOR MULTIPLE INCLUSION
+-----------------------------------------------------------------------------*/
 #ifndef    TASKS_H
 #define    TASKS_H
 
 
+/*-----------------------------------------------------------------------------
+    INCLUDE FILES
+-----------------------------------------------------------------------------*/
 #include <Arduino.h>
 
 
+/*-----------------------------------------------------------------------------
+    COMPILER OPTIONS
+-----------------------------------------------------------------------------*/
 #pragma GCC optimize ("O2")
 
 
-#define MAX_TASK_CNT    8      //!< Maximum number of parallel tasks
+/*-----------------------------------------------------------------------------
+    GLOBAL MACROS
+-----------------------------------------------------------------------------*/
+#define MAX_TASK_CNT    8                                                          //!< Maximum number of parallel tasks
+#define PTR_NON_STATIC_METHOD(instance, method)  [instance](){instance.method();}  //!< Get pointer to non-static member function via lambda function, see https://stackoverflow.com/questions/53091205/how-to-use-non-static-member-functions-as-callback-in-c
+
+
+/*-----------------------------------------------------------------------------
+    GLOBAL CLASS
+-----------------------------------------------------------------------------*/
 
 typedef void (*Task)(void);    //!< Example prototype for a function than can be executed as a task
 
 
 
 /**
-  \brief    Initialize and reset the tasks library.
-  \details  This function initializes the task scheduler and related timer.
+  \brief    Initialize timer and reset the tasks scheduler at first call.
+  \details  This function initializes the related timer and clears the task scheduler at first call.
             <br><br>Used HW blocks:
             <br>- Arduino ATMega: TIMER0_COMPA_vect
             <br>- Arduino SAM: TC3
 */
 void Tasks_Init(void);
+
+
+
+/**
+  \brief    Reset the tasks schedulder.
+  \details  This function clears the task scheduler. Use with caution!
+            <br><br>Used HW blocks:
+            <br>- Arduino ATMega: TIMER0_COMPA_vect
+            <br>- Arduino SAM: TC3
+*/
+void Tasks_Clear(void);
 
 
 
@@ -64,6 +93,7 @@ void Tasks_Init(void);
               <br>If a period of 0ms is given, the task is executed only once and then removed automatically.
               <br>To avoid ambiguities, a function can only be added once to the scheduler.
               Trying to add it a second time will reset and overwrite the settings of the existing task.
+              <br>For non-static member function use address from PTR_NON_STATIC_METHOD() macro. 
               <br><br>Used HW blocks:
               <br>- Arduino ATMega: TIMER0_COMPA_vect
               <br>- Arduino SAM: TC3
@@ -82,6 +112,7 @@ bool Tasks_Add(Task func, int16_t period, int16_t delay = 0);
 /**
   \brief      Remove a task from the task scheduler.
   \details    Remove the specified task from the scheduler and free the slot again.
+              <br>For non-static member function use address from PTR_NON_STATIC_METHOD() macro. 
               <br><br>Used HW blocks:
               <br>- Arduino ATMega: TIMER0_COMPA_vect
               <br>- Arduino SAM: TC3
@@ -102,6 +133,7 @@ bool Tasks_Remove(Task func);
               Delaying the task by <2ms forces it to be executed during the next 1ms timer tick.
               This means that the task might be called at any time anyway in case it was added multiple 
               times to the task scheduler.
+              <br>For non-static member function use address from PTR_NON_STATIC_METHOD() macro. 
               <br><br>Used HW blocks:
               <br>- Arduino ATMega: TIMER0_COMPA_vect
               <br>- Arduino SAM: TC3
@@ -115,10 +147,11 @@ bool Tasks_Delay(Task func, int16_t delay);
 
 
 /**
-  \brief    Enable or disable the execution of a task
-  \details  Temporary pause or resume function for execution of single tasks by scheduler.
-            This will not stop the task in case it is currently being executed but just prevents 
-            the task from being executed again in case its state is set to 'false' (inactive).
+  \brief      Enable or disable the execution of a task
+  \details    Temporary pause or resume function for execution of single tasks by scheduler.
+              This will not stop the task in case it is currently being executed but just prevents 
+              the task from being executed again in case its state is set to 'false' (inactive).
+              <br>For non-static member function use address from PTR_NON_STATIC_METHOD() macro. 
               <br><br>Used HW blocks:
               <br>- Arduino ATMega: TIMER0_COMPA_vect
               <br>- Arduino SAM: TC3
@@ -136,6 +169,7 @@ bool Tasks_SetState(Task func, bool state);
   \brief      Activate a task in the scheduler
   \details    Resume execution of the specified task. Possible parallel tasks are not affected. 
               This is a simple inlined function setting the 'state' argument for Tasks_SetState().
+              <br>For non-static member function use address from PTR_NON_STATIC_METHOD() macro. 
               <br><br>Used HW blocks:
               <br>- Arduino ATMega: TIMER0_COMPA_vect
               <br>- Arduino SAM: TC3
@@ -154,6 +188,7 @@ inline bool Tasks_Start_Task(Task func)
   \brief      Deactivate a task in the scheduler
   \details    Pause execution of the specified task. Possible parallel tasks are not affected. 
               This is a simple inlined function setting the 'state' argument for Tasks_SetState().
+              <br>For non-static member function use address from PTR_NON_STATIC_METHOD() macro. 
               <br><br>Used HW blocks:
               <br>- Arduino ATMega: TIMER0_COMPA_vect
               <br>- Arduino SAM: TC3

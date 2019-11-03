@@ -1,6 +1,7 @@
 var _tasks_8cpp =
 [
     [ "Tasks_Add", "_tasks_8cpp.html#abcd73ae8d50ad3929a21a5dfdb269bf4", null ],
+    [ "Tasks_Clear", "_tasks_8cpp.html#ad0f9e9096fe29465d37175d88f918370", null ],
     [ "Tasks_Delay", "_tasks_8cpp.html#a69a28492d0bbe6402e632c04de6f8b40", null ],
     [ "Tasks_Init", "_tasks_8cpp.html#a5b0ac193b3ae2f2f7cfd5dc7a66c811b", null ],
     [ "Tasks_Pause", "_tasks_8cpp.html#aa5521fb12d15b22fd08dfe78eaf0eabd", null ],
