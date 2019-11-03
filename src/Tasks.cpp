@@ -136,10 +136,23 @@ void Scheduler_update_nexttime(void)
 /************************************/
 
 
-
 void Tasks_Init(void)
 {
-  uint8_t  i;
+  static bool   flagDone = false;
+  
+  // clear tasks schedule only for first call to avoid issues when calling multiple times
+  if (flagDone == false) {
+    flagDone = true;
+    Tasks_Clear();  
+  }
+
+} // Tasks_Init()
+
+
+
+void Tasks_Clear(void)
+{
+  uint8_t       i;
   
   // stop interrupts, store old setting
   PAUSE_INTERRUPTS;
@@ -149,7 +162,7 @@ void Tasks_Init(void)
   _timebase = 0;
   _nexttime = 0;
   _lasttask = 0;
-  for(i = 0; i < MAX_TASK_CNT; i++)
+  for(uint8_t i = 0; i < MAX_TASK_CNT; i++)
   {
     //Reset scheduling table
     SchedulingTable[i].func = NULL;
@@ -161,8 +174,8 @@ void Tasks_Init(void)
   
   // resume stored interrupt setting
   RESUME_INTERRUPTS;
-
-} // Tasks_Init()
+  
+} // Tasks_Clear()
 
 
 
