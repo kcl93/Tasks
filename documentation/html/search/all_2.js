@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['task',['Task',['../_task__scheduler_8h.html#a43925087945f12bbd3cfd17b6a2a3e13',1,'Task_scheduler.h']]],
-  ['task_5fscheduler_2ecpp',['Task_scheduler.cpp',['../_task__scheduler_8cpp.html',1,'']]],
-  ['task_5fscheduler_2eh',['Task_scheduler.h',['../_task__scheduler_8h.html',1,'']]]
+  ['ptr_5fnon_5fstatic_5fmethod',['PTR_NON_STATIC_METHOD',['../_tasks_8h.html#add4514b8d4b89a464b0fbeab898218f7',1,'Tasks.h']]]
 ];
