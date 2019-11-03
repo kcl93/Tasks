@@ -50,7 +50,8 @@ typedef struct SchedulingStruct
 
 
 // global variables for scheduler
-SchedulingStruct  SchedulingTable[MAX_TASK_CNT];   // array containing all tasks
+SchedulingStruct  SchedulingTable[MAX_TASK_CNT] =  // array containing all tasks
+   { {(Task)NULL, false, false, 0, 0} };
 bool              SchedulingActive;                // false = Scheduling stopped, true = Scheduling active (no configuration allowed)
 int16_t           _timebase;                       // 1ms counter (on ATMega 1.024ms, is compensated)
 int16_t           _nexttime;                       // time of next task call 
@@ -138,13 +139,13 @@ void Scheduler_update_nexttime(void)
 
 void Tasks_Init(void)
 {
-  static bool   flagDone = false;
+  /*static bool   flagDone = false;
   
   // clear tasks schedule only for first call to avoid issues when calling multiple times
   if (flagDone == false) {
     flagDone = true;
     Tasks_Clear();  
-  }
+  }*/
 
 } // Tasks_Init()
 
