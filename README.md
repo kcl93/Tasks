@@ -14,7 +14,9 @@ The task scheduler is executed every 1ms. A possibly running task is interrupted
 - The Arduino DUE enables other interrupts by using the lowest possible priority (15) for the task scheduler interrupt.
 - For non-static member functions, i.e. class methods, use the adress to a [wrapper function](https://stackoverflow.com/questions/53091205/how-to-use-non-static-member-functions-as-callback-in-c) created via PTR_NON_STATIC_METHOD() instead of function name. For an example see Class\_methods. 
 
-## Warning: The Arduino Due does not support reeantrant interrupts due to HW limitations. This means that unlike the Arduino MEGA the DUE is not able to execute fast 1ms tasks several times before finishing a slower tasks with for example a 10ms timebase. This problem will be especially visible if the sum of the execution time of all tasks is greater than the execution period of the fastest task.
+## Warning: 
+
+The Arduino Due does not support reeantrant interrupts due to HW limitations. This means that unlike the Arduino MEGA the DUE is not able to execute fast 1ms tasks several times before finishing a slower tasks with for example a 10ms timebase. This problem will be especially visible if the sum of the execution time of all tasks is greater than the execution period of the fastest task.
 
 ## Supported Boards:
 
