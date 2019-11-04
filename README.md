@@ -1,4 +1,4 @@
-# tasks
+# Tasks
 
 Lightweight and fast preemptive scheduler for ATMega and SAM3X (DUE) Arduino Boards
 
@@ -6,7 +6,7 @@ This library implements a simple, preemptive task scheduler that is executed in 
 
 The task scheduler is executed every 1ms. A possibly running task is interrupted by this and only resumed after all succeeding tasks have finished. This means that always the task started last has the highest priority. This effect needs to be kept in mind when programming a software using this library.
 
-More documentation can be found here: http://htmlpreview.github.io/?https://github.com/kcl93/tasks/blob/master/documentation/html/index.html
+More documentation can be found here: http://htmlpreview.github.io/?https://github.com/kcl93/Tasks/blob/master/documentation/html/index.html
 
 ## Notes:
 
