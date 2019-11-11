@@ -475,7 +475,7 @@ void Tasks_Pause(void)
   #endif
   
   #if defined(__SAM3X8E__)
-    TC_GetStatus(TC1, 0);
+    TC1->TC_CHANNEL[0].TC_SR; //Read status register to delete status flags
   #endif
   
   // Skip if scheduling was stopped or is in the process of being stopped
