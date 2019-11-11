@@ -39,7 +39,7 @@ uint8_t    oldISR = 0;
 
 
 // task container
-typedef struct SchedulingStruct
+struct SchedulingStruct
 {
   Task      func;                                  // function to call
   bool      active;                                // task is active
@@ -50,7 +50,7 @@ typedef struct SchedulingStruct
 
 
 // global variables for scheduler
-SchedulingStruct  SchedulingTable[MAX_TASK_CNT] =  // array containing all tasks
+struct SchedulingStruct  SchedulingTable[MAX_TASK_CNT] =  // array containing all tasks
    { {(Task)NULL, false, false, 0, 0} };
 bool              SchedulingActive;                // false = Scheduling stopped, true = Scheduling active (no configuration allowed)
 int16_t           _timebase;                       // 1ms counter (on ATMega 1.024ms, is compensated)
@@ -97,34 +97,25 @@ void Scheduler_update_nexttime(void)
   
   // find time of next task execution  
   _nexttime = _timebase + INT16_MAX; // Max. possible delay of the next time
-  for (uint8_t i = 0; i < _lasttask; i++) {
-    if ((SchedulingTable[i].active == true) && (SchedulingTable[i].func != NULL)) {
+  for (uint8_t i = 0; i < _lasttask; i++)
+  {
+    if ((SchedulingTable[i].active == true) && (SchedulingTable[i].func != NULL))
+    {
+      //Serial.print(i); Serial.print("  "); Serial.println(SchedulingTable[i].time);
 
-      /*
-      Serial.print(i);
-      Serial.print("  ");
-      Serial.println(SchedulingTable[i].time);
-      */
-
-      if ((int16_t)(SchedulingTable[i].time - _nexttime) < 0) {
+      if ((int16_t)(SchedulingTable[i].time - _nexttime) < 0)
+      {
         _nexttime = SchedulingTable[i].time;
       }
     }
   }
 
-  /*
-  Serial.print("timebase  ");
-  Serial.println(_timebase);
-  Serial.print("nexttime  ");
-  Serial.println(_nexttime);
-  Serial.println();
-  */
-  /*
-  Serial.print(_timebase);
-  Serial.print("  ");
-  Serial.println(_nexttime - _timebase);
-  */
+  //Serial.print("timebase: "); Serial.println(_timebase);
+  //Serial.print("nexttime: "); Serial.println(_nexttime);
+  //Serial.println();
 
+  //Serial.print(_timebase); Serial.print("  "); Serial.println(_nexttime - _timebase);
+  
   // resume stored interrupt setting
   RESUME_INTERRUPTS;
 
@@ -153,7 +144,7 @@ void Tasks_Init(void)
 
 void Tasks_Clear(void)
 {
-  uint8_t       i;
+  uint8_t i;
   
   // stop interrupts, store old setting
   PAUSE_INTERRUPTS;
@@ -163,7 +154,7 @@ void Tasks_Clear(void)
   _timebase = 0;
   _nexttime = 0;
   _lasttask = 0;
-  for(uint8_t i = 0; i < MAX_TASK_CNT; i++)
+  for(i = 0; i < MAX_TASK_CNT; i++)
   {
     //Reset scheduling table
     SchedulingTable[i].func = NULL;
@@ -181,10 +172,7 @@ void Tasks_Clear(void)
 
 
 bool Tasks_Add(Task func, int16_t period, int16_t delay)
-{  
-  // stop interrupts, store old setting
-  PAUSE_INTERRUPTS;
-
+{
   // Check range of period and delay
   if ((period < 0) || (delay < 0))
     return false;
