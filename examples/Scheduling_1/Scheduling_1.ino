@@ -38,11 +38,11 @@ void setup()
   Tasks_Init();
 
   // print delay between calls to serial console
-  Tasks_Add(task_1, 1000, 0);
-  Tasks_Add(task_2, 1000, 100);
-  Tasks_Add(task_3, 1000, 200);
-  Tasks_Add(task_4, 1000, 300);
-  Tasks_Add(task_5, 1000, 400);
+  Tasks_Add((Task) task_1, 1000, 0);
+  Tasks_Add((Task) task_2, 1000, 100);
+  Tasks_Add((Task) task_3, 1000, 200);
+  Tasks_Add((Task) task_4, 1000, 300);
+  Tasks_Add((Task) task_5, 1000, 400);
   
   // Start task scheduler
   Tasks_Start();

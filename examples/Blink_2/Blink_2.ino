@@ -40,8 +40,8 @@ void setup()
   
   // Configure task scheduler
   Tasks_Init();
-  Tasks_Add(toggle_1, 10, 0);
-  Tasks_Add(toggle_2, 1, 0);
+  Tasks_Add((Task) toggle_1, 10, 0);
+  Tasks_Add((Task) toggle_2, 1, 0);
   Tasks_Start();
 }
 

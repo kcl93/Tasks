@@ -52,8 +52,8 @@ void setup()
   Tasks_Init();
 
   // print delay between calls to serial console
-  Tasks_Add(print_pause, PERIOD_PRINT, 500);
-  Tasks_Add(toggle_LED, PERIOD_LED, 500);
+  Tasks_Add((Task) print_pause, PERIOD_PRINT, 500);
+  Tasks_Add((Task) toggle_LED, PERIOD_LED, 500);
 
   // Start task scheduler
   Tasks_Start();
@@ -75,23 +75,23 @@ void loop()
       case '1':
         Serial.println("decrease delay");
         g_period = PERIOD_PRINT / 2;
-        Tasks_Delay(print_pause, 1); // force next execution
+        Tasks_Delay((Task) print_pause, 1); // force next execution
         break;
 
       case '2':
         Serial.println("increase delay");
         g_period = PERIOD_PRINT * 2;
-        Tasks_Delay(print_pause, 1); // force next execution
+        Tasks_Delay((Task) print_pause, 1); // force next execution
         break;
 
       case '3':
         Serial.println("pause task");
-        Tasks_Pause_Task(print_pause);
+        Tasks_Pause_Task((Task) print_pause);
         break;
 
       case '4':
         Serial.println("resume task");
-        Tasks_Start_Task(print_pause);
+        Tasks_Start_Task((Task) print_pause);
         break;        
 
       case '5':
@@ -116,7 +116,7 @@ void print_pause(void)
 {
   static uint32_t old_time = millis() - PERIOD_PRINT;
   if (g_period != 0)
-    Tasks_Delay(print_pause, g_period);
+    Tasks_Delay((Task) print_pause, g_period);
   else {
     Serial.print("pause = ");
     Serial.println(millis() - old_time);

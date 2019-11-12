@@ -27,7 +27,7 @@ void setup()
   
   // Configure task scheduler
   Tasks_Init();
-  Tasks_Add(blink, 500, 0);
+  Tasks_Add((Task) blink, 500, 0);
   Tasks_Start();
 }
 
