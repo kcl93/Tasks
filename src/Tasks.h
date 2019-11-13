@@ -52,7 +52,7 @@
     GLOBAL MACROS
 -----------------------------------------------------------------------------*/
 #define MAX_TASK_CNT    8                                                          //!< Maximum number of parallel tasks
-#define PTR_NON_STATIC_METHOD(instance, method)  [instance](){instance.method();}  //!< Get pointer to non-static member function via lambda function, see https://stackoverflow.com/questions/53091205/how-to-use-non-static-member-functions-as-callback-in-c
+//#define PTR_NON_STATIC_METHOD(instance, method)  [instance](){instance.method();}  //!< Get pointer to non-static member function via lambda function, see https://stackoverflow.com/questions/53091205/how-to-use-non-static-member-functions-as-callback-in-c
 
 
 /*-----------------------------------------------------------------------------
