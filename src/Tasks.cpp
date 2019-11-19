@@ -307,6 +307,9 @@ bool Tasks_Remove(Task func)
 
   } // loop over scheduler slots
   
+  // resume stored interrupt setting
+  RESUME_INTERRUPTS;
+
   // did not change anything, thus no scheduler_update_nexttime neccessary
   // function not in scheduler -> error
   return false;
