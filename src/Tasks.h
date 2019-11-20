@@ -99,7 +99,7 @@ void Tasks_Clear(void);
               <br>- Arduino SAM: TC3
   \param[in]  func    Function to be executed.<br>The function prototype should be similar to this:
                       "void userFunction(void)"
-  \param[in]  period  Execution period of the task in ms (0 to 32767)
+  \param[in]  period  Execution period of the task in ms (0 to 32767; 0 = task only executes once) 
   \param[in]  delay   Delay until first execution of task in ms (0 to 32767)
   \return     true in case of success,
               false in case of failure (max. number of tasks reached, or duplicate function)
