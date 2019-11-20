@@ -1,7 +1,6 @@
 var NAVTREE =
 [
   [ "Task scheduler library", "index.html", [
-    [ "Arduino Task Scheduler", "index.html", null ],
     [ "Files", null, [
       [ "File List", "files.html", "files" ],
       [ "Globals", "globals.html", [

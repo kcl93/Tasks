@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['arduino_20task_20scheduler',['Arduino Task Scheduler',['../index.html',1,'']]]
+  ['max_5ftask_5fcnt',['MAX_TASK_CNT',['../_tasks_8h.html#a544da5c693eaab178a8138e7ac27ad99',1,'Tasks.h']]]
 ];
