@@ -1,7 +1,6 @@
 var _tasks_8h =
 [
     [ "MAX_TASK_CNT", "_tasks_8h.html#a544da5c693eaab178a8138e7ac27ad99", null ],
-    [ "PTR_NON_STATIC_METHOD", "_tasks_8h.html#add4514b8d4b89a464b0fbeab898218f7", null ],
     [ "Task", "_tasks_8h.html#a43925087945f12bbd3cfd17b6a2a3e13", null ],
     [ "Tasks_Add", "_tasks_8h.html#a3e6886beaa41aea1bedede2e0f1c0723", null ],
     [ "Tasks_Clear", "_tasks_8h.html#ad0f9e9096fe29465d37175d88f918370", null ],

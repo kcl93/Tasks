@@ -162,7 +162,7 @@ Functions</h2></td></tr>
 If no delay is given the task is executed at once or after starting the task scheduler (see <a class="el" href="_tasks_8h.html#aee9e99dc76d2f8ad7c7eb22c6e709271" title="Start the task scheduler. ">Tasks_Start()</a>) <br />
 If a period of 0ms is given, the task is executed only once and then removed automatically. <br />
 To avoid ambiguities, a function can only be added once to the scheduler. Trying to add it a second time will reset and overwrite the settings of the existing task. <br />
-For non-static member function use address from <a class="el" href="_tasks_8h.html#add4514b8d4b89a464b0fbeab898218f7" title="Get pointer to non-static member function via lambda function, see https://stackoverflow.com/questions/53091205/how-to-use-non-static-member-functions-as-callback-in-c. ">PTR_NON_STATIC_METHOD()</a> macro. <br />
+For non-static member function use address from PTR_NON_STATIC_METHOD() macro. <br />
 <br />
 Used HW blocks: <br />
 - Arduino ATMega: TIMER0_COMPA_vect <br />
@@ -170,7 +170,7 @@ Used HW blocks: <br />
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">func</td><td>Function to be executed.<br />
 The function prototype should be similar to this: "void userFunction(void)" </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">period</td><td>Execution period of the task in ms (0 to 32767) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">period</td><td>Execution period of the task in ms (0 to 32767; 0 = task only executes once) </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">delay</td><td>Delay until first execution of task in ms (0 to 32767) </td></tr>
   </table>
   </dd>
@@ -178,7 +178,7 @@ The function prototype should be similar to this: "void userFunction(void)" </td
 <dl class="section return"><dt>Returns</dt><dd>true in case of success, false in case of failure (max. number of tasks reached, or duplicate function) </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>The maximum number of tasks is defined as <code>MAX_TASK_CNT</code> in file <code><a class="el" href="_tasks_8h.html" title="Library providing a simple task scheduler for multitasking. ">Tasks.h</a></code> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_tasks_8cpp_source.html#l00182">182</a> of file <a class="el" href="_tasks_8cpp_source.html">Tasks.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_tasks_8cpp_source.html#l00174">174</a> of file <a class="el" href="_tasks_8cpp_source.html">Tasks.cpp</a>.</p>
 
 </div>
 </div>
@@ -205,7 +205,7 @@ Used HW blocks: <br />
 - Arduino ATMega: TIMER0_COMPA_vect <br />
 - Arduino SAM: TC3 </p>
 
-<p class="definition">Definition at line <a class="el" href="_tasks_8cpp_source.html#l00153">153</a> of file <a class="el" href="_tasks_8cpp_source.html">Tasks.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_tasks_8cpp_source.html#l00145">145</a> of file <a class="el" href="_tasks_8cpp_source.html">Tasks.cpp</a>.</p>
 
 </div>
 </div>
@@ -238,7 +238,7 @@ Used HW blocks: <br />
 <p>Delay execution of a task. </p>
 <p>The task is delayed starting from the last 1ms timer tick which means the delay time is accurate to -1ms to 0ms. <br />
 This overwrites any previously set delay setting for this task and thus even allows earlier execution of a task. Delaying the task by &lt;2ms forces it to be executed during the next 1ms timer tick. This means that the task might be called at any time anyway in case it was added multiple times to the task scheduler. <br />
-For non-static member function use address from <a class="el" href="_tasks_8h.html#add4514b8d4b89a464b0fbeab898218f7" title="Get pointer to non-static member function via lambda function, see https://stackoverflow.com/questions/53091205/how-to-use-non-static-member-functions-as-callback-in-c. ">PTR_NON_STATIC_METHOD()</a> macro. <br />
+For non-static member function use address from PTR_NON_STATIC_METHOD() macro. <br />
 <br />
 Used HW blocks: <br />
 - Arduino ATMega: TIMER0_COMPA_vect <br />
@@ -251,7 +251,7 @@ Used HW blocks: <br />
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true in case of success, false in case of failure (e.g. function not in not in scheduler table) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_tasks_8cpp_source.html#l00329">329</a> of file <a class="el" href="_tasks_8cpp_source.html">Tasks.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_tasks_8cpp_source.html#l00321">321</a> of file <a class="el" href="_tasks_8cpp_source.html">Tasks.cpp</a>.</p>
 
 </div>
 </div>
@@ -278,7 +278,7 @@ Used HW blocks: <br />
 - Arduino ATMega: TIMER0_COMPA_vect <br />
 - Arduino SAM: TC3 </p>
 
-<p class="definition">Definition at line <a class="el" href="_tasks_8cpp_source.html#l00139">139</a> of file <a class="el" href="_tasks_8cpp_source.html">Tasks.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_tasks_8cpp_source.html#l00131">131</a> of file <a class="el" href="_tasks_8cpp_source.html">Tasks.cpp</a>.</p>
 
 </div>
 </div>
@@ -305,7 +305,7 @@ Used HW blocks: <br />
 - Arduino ATMega: TIMER0_COMPA_vect <br />
 - Arduino SAM: TC3 </p>
 
-<p class="definition">Definition at line <a class="el" href="_tasks_8cpp_source.html#l00451">451</a> of file <a class="el" href="_tasks_8cpp_source.html">Tasks.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_tasks_8cpp_source.html#l00443">443</a> of file <a class="el" href="_tasks_8cpp_source.html">Tasks.cpp</a>.</p>
 
 </div>
 </div>
@@ -327,7 +327,7 @@ Used HW blocks: <br />
 
 <p>Remove a task from the task scheduler. </p>
 <p>Remove the specified task from the scheduler and free the slot again. <br />
-For non-static member function use address from <a class="el" href="_tasks_8h.html#add4514b8d4b89a464b0fbeab898218f7" title="Get pointer to non-static member function via lambda function, see https://stackoverflow.com/questions/53091205/how-to-use-non-static-member-functions-as-callback-in-c. ">PTR_NON_STATIC_METHOD()</a> macro. <br />
+For non-static member function use address from PTR_NON_STATIC_METHOD() macro. <br />
 <br />
 Used HW blocks: <br />
 - Arduino ATMega: TIMER0_COMPA_vect <br />
@@ -339,7 +339,7 @@ Used HW blocks: <br />
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true in case of success, false in case of failure (e.g. function not in not in scheduler table) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_tasks_8cpp_source.html#l00270">270</a> of file <a class="el" href="_tasks_8cpp_source.html">Tasks.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_tasks_8cpp_source.html#l00259">259</a> of file <a class="el" href="_tasks_8cpp_source.html">Tasks.cpp</a>.</p>
 
 </div>
 </div>
@@ -371,7 +371,7 @@ Used HW blocks: <br />
 
 <p>Enable or disable the execution of a task. </p>
 <p>Temporary pause or resume function for execution of single tasks by scheduler. This will not stop the task in case it is currently being executed but just prevents the task from being executed again in case its state is set to 'false' (inactive). <br />
-For non-static member function use address from <a class="el" href="_tasks_8h.html#add4514b8d4b89a464b0fbeab898218f7" title="Get pointer to non-static member function via lambda function, see https://stackoverflow.com/questions/53091205/how-to-use-non-static-member-functions-as-callback-in-c. ">PTR_NON_STATIC_METHOD()</a> macro. <br />
+For non-static member function use address from PTR_NON_STATIC_METHOD() macro. <br />
 <br />
 Used HW blocks: <br />
 - Arduino ATMega: TIMER0_COMPA_vect <br />
@@ -385,7 +385,7 @@ The function prototype should be similar to this: "void userFunction(void)" </td
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>'true' in case of success, else 'false' (e.g. function not in not in scheduler table) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_tasks_8cpp_source.html#l00383">383</a> of file <a class="el" href="_tasks_8cpp_source.html">Tasks.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_tasks_8cpp_source.html#l00375">375</a> of file <a class="el" href="_tasks_8cpp_source.html">Tasks.cpp</a>.</p>
 
 </div>
 </div>
@@ -412,7 +412,7 @@ Used HW blocks: <br />
 - Arduino ATMega: TIMER0_COMPA_vect <br />
 - Arduino SAM: TC3 </p>
 
-<p class="definition">Definition at line <a class="el" href="_tasks_8cpp_source.html#l00425">425</a> of file <a class="el" href="_tasks_8cpp_source.html">Tasks.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_tasks_8cpp_source.html#l00417">417</a> of file <a class="el" href="_tasks_8cpp_source.html">Tasks.cpp</a>.</p>
 
 </div>
 </div>
