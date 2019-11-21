@@ -1,3 +1,8 @@
+/**
+  Example class with non-static member functions to be called
+  by scheduler via external wrapper function, see Class_method.ino
+*/
+
 // include files
 #include "Arduino.h"
 

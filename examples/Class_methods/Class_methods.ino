@@ -31,6 +31,7 @@ void setup()
 {
   // open port to PC
   Serial.begin(115200);
+  while(!Serial);
 
   Serial.println("Start tasks");
      
