@@ -9,7 +9,7 @@ on:
   
   # Also run every 7 days to catch breakage caused by changes to external resources (libraries, platforms).
   schedule:
-    # Minute, Hour, Day of Month, Month, Day of Week -> every 7 days at 9.15pm
+    # Minute, Hour, Day of Month, Month, Day of Week -> every 7 days at 9.15pm (UTC)
     - cron: '15 21 */7 * *'
 
 jobs:
